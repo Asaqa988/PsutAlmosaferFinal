@@ -167,9 +167,8 @@ public class myTestCases {
 			WebElement cityList = driver.findElement(By.className("phbroq-4"));
 			List<WebElement> myItems = cityList.findElements(By.tagName("li"));
 			myItems.get(1).click();
-			WebElement vistorinput = driver.findElement(By.className("tln3e3-1"));
-			Select mySelector = new Select(vistorinput);
-			mySelector.selectByVisibleText("1 غرفة، 1 بالغ، 0 أطفال");
+
+			//mySelector.selectByVisibleText("1 غرفة، 1 بالغ، 0 أطفال");
 
 		} else {
 
@@ -180,10 +179,13 @@ public class myTestCases {
 			List<WebElement> myItems = cityList.findElements(By.tagName("li"));
 			myItems.get(1).click();
 			WebElement vistorinput = driver.findElement(By.className("tln3e3-1"));
-			Select mySelector = new Select(vistorinput);
-			mySelector.selectByVisibleText("1 Room, 1 Adult, 0 Children");
+			//mySelector.selectByVisibleText("1 Room, 1 Adult, 0 Children");
 
 		}
+		WebElement vistorinput = driver.findElement(By.className("tln3e3-1"));
+		Select mySelector = new Select(vistorinput);
+		
+		mySelector.selectByIndex(1);
 
 	}
 
