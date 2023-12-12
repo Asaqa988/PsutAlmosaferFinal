@@ -7,6 +7,7 @@ import java.util.Locale;
 import java.util.Random;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,7 +24,6 @@ public class myTestCases {
 	WebDriver driver = new ChromeDriver();
 	SoftAssert softassert = new SoftAssert();
 	Random rand = new Random();
-
 	String[] arabicCitiesNames = { "دبي", "جدة" };
 	String[] englishCitiesNames = { "Jeddah", "riyadh", "dubai" };
 	int randomArabic = rand.nextInt(arabicCitiesNames.length);
@@ -168,8 +168,6 @@ public class myTestCases {
 			List<WebElement> myItems = cityList.findElements(By.tagName("li"));
 			myItems.get(1).click();
 
-			//mySelector.selectByVisibleText("1 غرفة، 1 بالغ، 0 أطفال");
-
 		} else {
 
 			Assert.assertEquals(ActualLanguage, "en");
@@ -178,15 +176,68 @@ public class myTestCases {
 			WebElement cityList = driver.findElement(By.className("phbroq-4"));
 			List<WebElement> myItems = cityList.findElements(By.tagName("li"));
 			myItems.get(1).click();
-			WebElement vistorinput = driver.findElement(By.className("tln3e3-1"));
-			//mySelector.selectByVisibleText("1 Room, 1 Adult, 0 Children");
 
 		}
 		WebElement vistorinput = driver.findElement(By.className("tln3e3-1"));
-		Select mySelector = new Select(vistorinput);
-		
-		mySelector.selectByIndex(1);
 
+		Select mySelector = new Select(vistorinput);
+		int randomIndexForVistor = rand.nextInt(2);
+
+		mySelector.selectByIndex(randomIndexForVistor);
+		WebElement SearchButton = driver.findElement(By.className("sc-1vkdpp9-6"));
+		SearchButton.click();
+
+		Thread.sleep(20000);
+
+		String HotelSearchResult = driver.findElement(By.className("sc-cClmTo")).getText();
+
+		// THIS IS ONE WAY
+
+//		Assert.assertEquals(HotelSearchResult.contains("وجدنا")||HotelSearchResult.contains("found"), true);
+
+		// THIS IS ANOTHER WAY
+		if (driver.getCurrentUrl().contains("ar")) {
+			boolean ActualResult = HotelSearchResult.contains("وجدنا");
+			boolean ExpectedResult = true;
+			Assert.assertEquals(ActualResult, ExpectedResult);
+			WebElement LowestPriceFilter = driver.findElement(By.className("kgqEve"));
+			LowestPriceFilter.click();
+
+		} else {
+			boolean ActualResult = HotelSearchResult.contains("found");
+			boolean ExpectedResult = true;
+			Assert.assertEquals(ActualResult, ExpectedResult);
+			WebElement LowestPriceFilter = driver.findElement(By.className("jurIdk"));
+			LowestPriceFilter.click();
+
+		}
+
+		Thread.sleep(5000);
+
+//		List<WebElement> grandpa = driver.findElements(By.className("PriceDisplay__FinalRate"));
+//
+//		for (int i = 0; i < grandpa.size(); i++) {
+//
+//			WebElement son = grandpa.get(i)
+//					.findElement(By.className("PriceDisplay__FinalRate"));
+//			
+//			WebElement grandSon = son.findElement(By.className("Price__Value"));
+//			
+//			System.out.println(grandSon.getText());
+//		}
+
+		WebElement PricesSection = driver.findElement(By.cssSelector(".sc-htpNat.KtFsv.col-9"));
+
+		List<WebElement> myPrices = PricesSection.findElements(By.className("Price__Value"));
+
+		for (int i = 0; i < myPrices.size(); i++) {
+			System.out.println(myPrices.get(i).getText());
+
+			int lowestPrice = Integer.parseInt(myPrices.get(0).getText());
+			int highestPrice = Integer.parseInt(myPrices.get(myPrices.size() - 1).getText());
+
+			Assert.assertEquals(highestPrice > lowestPrice, true);
+		}
 	}
 
 	@AfterTest
