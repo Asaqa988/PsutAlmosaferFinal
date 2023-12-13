@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="6" total="7" passed="1" failed="0" skipped="0">
+<testng-results ignored="3" total="4" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-10T19:08:54 EET" name="Default suite" finished-at="2023-12-10T19:09:02 EET" duration-ms="7852">
+  <suite started-at="2023-12-13T19:05:27 EET" name="Default suite" finished-at="2023-12-13T19:05:29 EET" duration-ms="2759">
     <groups>
     </groups>
-    <test started-at="2023-12-10T19:08:54 EET" name="Default test" finished-at="2023-12-10T19:09:02 EET" duration-ms="7852">
+    <test started-at="2023-12-13T19:05:27 EET" name="Default test" finished-at="2023-12-13T19:05:29 EET" duration-ms="2759">
       <class name="AlmosaferWeb.myTestCases">
-        <test-method is-config="true" signature="Setup()[pri:0, instance:AlmosaferWeb.myTestCases@4d098f9b]" started-at="2023-12-10T19:08:54 EET" name="Setup" finished-at="2023-12-10T19:08:57 EET" duration-ms="2873" status="PASS">
+        <test-method is-config="true" signature="Setup()[pri:0, instance:AlmosaferWeb.myTestCases@7e3060d8]" started-at="2023-12-13T19:05:27 EET" name="Setup" finished-at="2023-12-13T19:05:29 EET" duration-ms="2709" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Setup -->
-        <test-method signature="changeTheLanguageOfTheWebsiteRandomly()[pri:0, instance:AlmosaferWeb.myTestCases@4d098f9b]" started-at="2023-12-10T19:08:57 EET" name="changeTheLanguageOfTheWebsiteRandomly" finished-at="2023-12-10T19:09:02 EET" duration-ms="4961" status="PASS">
+        <test-method signature="CheckLogoApple()[pri:0, instance:AlmosaferWeb.myTestCases@7e3060d8]" started-at="2023-12-13T19:05:29 EET" name="CheckLogoApple" finished-at="2023-12-13T19:05:29 EET" duration-ms="32" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- changeTheLanguageOfTheWebsiteRandomly -->
-        <test-method is-config="true" signature="myAfterTest()[pri:0, instance:AlmosaferWeb.myTestCases@4d098f9b]" started-at="2023-12-10T19:09:02 EET" name="myAfterTest" finished-at="2023-12-10T19:09:02 EET" duration-ms="0" status="PASS">
+        </test-method> <!-- CheckLogoApple -->
+        <test-method is-config="true" signature="myAfterTest()[pri:0, instance:AlmosaferWeb.myTestCases@7e3060d8]" started-at="2023-12-13T19:05:29 EET" name="myAfterTest" finished-at="2023-12-13T19:05:29 EET" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- myAfterTest -->
